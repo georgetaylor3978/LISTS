@@ -1,0 +1,24 @@
+{
+  "name": "books-movies",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000L\u0000I\u0000S\u0000T\u0000S\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/georgetaylor3978/LISTS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/georgetaylor3978/LISTS/issues"
+  },
+  "homepage": "https://github.com/georgetaylor3978/LISTS#readme",
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  }
+}
