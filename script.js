@@ -25,10 +25,9 @@ const yearFilterGroup = document.getElementById('yearFilterGroup');
 const directorFilterGroup = document.getElementById('directorFilterGroup');
 
 // Initialize
-async function init() {
+function init() {
     try {
-        const response = await fetch('data.json');
-        currentData = await response.json();
+        currentData = typeof collectionData !== 'undefined' ? collectionData : { Movies: [], TV: [], Books: [] };
         
         // Setup Event Listeners
         setupListeners();
@@ -37,7 +36,7 @@ async function init() {
         renderTab(activeTab);
     } catch (error) {
         console.error('Error loading data:', error);
-        tableBody.innerHTML = '<tr><td colspan="10" style="text-align:center; color:#ef4444;">Error loading data.json</td></tr>';
+        tableBody.innerHTML = '<tr><td colspan="10" style="text-align:center; color:#ef4444;">Error loading data</td></tr>';
     }
 }
 
