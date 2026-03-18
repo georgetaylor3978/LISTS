@@ -12,7 +12,17 @@ try {
 
     const jsContent = `const collectionData = ${JSON.stringify(data, null, 4)};`;
     fs.writeFileSync('data.js', jsContent);
-    console.log('Successfully converted Movies and Music.xlsx to data.js');
+    
+    // Update index.html to avoid browser caching of data.js
+    let html = fs.readFileSync('index.html', 'utf8');
+    const timestamp = Date.now();
+    // Reset any existing cache buster
+    html = html.replace(/src="data\.js(\?v=\d+)?"/, `src="data.js?v=${timestamp}"`);
+    // Same for script.js
+    html = html.replace(/src="script\.js(\?v=\d+)?"/, `src="script.js?v=${timestamp}"`);
+    fs.writeFileSync('index.html', html);
+
+    console.log(`Successfully converted Movies and Music.xlsx to data.js (v=${timestamp})`);
 } catch (error) {
     console.error('Error converting excel to json:', error);
 }
