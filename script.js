@@ -1,7 +1,8 @@
 let currentData = {
     Movies: [],
     TV: [],
-    Books: []
+    Books: [],
+    Misc: []
 };
 
 let activeTab = 'Movies';
@@ -27,7 +28,7 @@ const directorFilterGroup = document.getElementById('directorFilterGroup');
 // Initialize
 function init() {
     try {
-        currentData = typeof collectionData !== 'undefined' ? collectionData : { Movies: [], TV: [], Books: [] };
+        currentData = typeof collectionData !== 'undefined' ? collectionData : { Movies: [], TV: [], Books: [], Misc: [] };
         
         // Setup Event Listeners
         setupListeners();
@@ -207,6 +208,11 @@ function renderTableBody() {
             // Special formatting for rating
             if (key === 'Rating' && val !== '-') {
                 return `<td><span class="rating-badge"><i class="fa-solid fa-star" style="font-size:0.75rem;margin-right:4px;"></i>${val}</span></td>`;
+            }
+            
+            // Special formatting for links
+            if (key === 'Link' && val !== '-') {
+                return `<td><a href="${val}" target="_blank" style="color: var(--primary-color); text-decoration: underline;">link</a></td>`;
             }
             
             return `<td>${val}</td>`;
